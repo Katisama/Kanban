@@ -1,6 +1,7 @@
 services:
   mysql_db:
     image: mysql:8.0.33
+    container_name: kanban_db
 #    restart: always
     environment:
       MYSQL_DATABASE: 'db_test'
