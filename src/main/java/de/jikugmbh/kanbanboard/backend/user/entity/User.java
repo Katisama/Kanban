@@ -1,11 +1,13 @@
 package de.jikugmbh.kanbanboard.backend.user.entity;
 
-import de.jikugmbh.kanbanboard.backend.project.entity.Project;
-import jakarta.persistence.*;
-import lombok.*;
-
-import java.util.List;
-import java.util.Set;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
