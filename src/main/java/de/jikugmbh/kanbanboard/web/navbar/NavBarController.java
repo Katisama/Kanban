@@ -4,6 +4,7 @@ import de.jikugmbh.kanbanboard.backend.userstory.entity.StoryPoints;
 import de.jikugmbh.kanbanboard.backend.userstory.entity.StoryPrio;
 import de.jikugmbh.kanbanboard.backend.userstory.entity.StoryStatus;
 import de.jikugmbh.kanbanboard.backend.userstory.entity.StoryType;
+import de.jikugmbh.kanbanboard.web.userstory.model.UserStoryModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,9 @@ public class NavBarController {
     @RequestMapping("/new-story")
     public String getNewUserStory(Model model) {
 
+        model.addAttribute("userStoryModel", UserStoryModel
+                .builder()
+                .build());
         prepareGuiModel(model);
 
         return "createnewuserstory";

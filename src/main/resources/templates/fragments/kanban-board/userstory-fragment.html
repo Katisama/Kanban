@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<form th:action="@{/save-story}" th:method="post" th:object="${userStory}">
+<form th:action="@{/save-story}" th:method="post" th:object="${userStoryModel}">
     <div class="form-group">
         <h2>User Story</h2>
     </div>
@@ -21,33 +21,28 @@
     <div class="row">
         <div class="form-group col-sm-8">
             <label class="mb-2" for="summary">summary</label>
-            <input class="form-control mb-2" type="text" id="summary">
+            <input class="form-control mb-2" type="text" id="summary" th:field="*{summary}">
         </div>
 
         <div class="form-group col-sm-2 mb-2">
             <label class="mb-2" for="assignMe">Assignee</label>
             <label class="form-control mb-2">...</label>
             <input class="btn btn-primary form-control mb-2" id="assignMe" value="assign me">
+            <input type="hidden" field="*{assigneeId}" name="assigneeId">
         </div>
     </div>
     <div class="row">
         <div class="col-sm-3">
             <div class="form-group mb-2">
                 <label for="storyType">Type</label>
-                <select class="form-control" id="storyType">
-<!--                   <option th:each="typeOpt : ${T(de.jikugmbh.kanbanboard.backend.userstory.entity.StoryType).values()}"-->
-<!--                           th:value="${typeOpt}" th:text="${typeOpt.value}"></option>-->
+                <select class="form-control" id="storyType" th:field="*{type}" name="type">
                     <option th:each="typeOpt : ${typeOpts}" th:value=${typeOpt} th:text="${typeOpt.displayValue}"></option>
                 </select>
             </div>
 
             <div class="form-group mb-2">
                 <label for="storyPrio">Prio</label>
-                <select class="form-control" id="storyPrio">
-<!--                    <option selected>...</option>-->
-<!--                    <option value="1">One</option>-->
-<!--                    <option value="2">Two</option>-->
-<!--                    <option value="3">Three</option>-->
+                <select class="form-control" id="storyPrio" field="*{priority}" name="priority">
                     <option th:each="storyPrio : ${storyPrios}" th:value=${storyPrio} th:text="${storyPrio.displayValue}"></option>
 
                 </select>
@@ -58,11 +53,7 @@
         <div class="col-sm-3">
             <div class="form-group mb-2">
                 <label for="storyStatus">Status</label>
-                <select class="form-control" id="storyStatus">
-<!--                    <option selected>...</option>-->
-<!--                    <option value="1">One</option>-->
-<!--                    <option value="2">Two</option>-->
-<!--                    <option value="3">Three</option>-->
+                <select class="form-control" id="storyStatus" field="*{status}" name="status">
                     <option th:each="storyStatus : ${storyStatus}" th:value=${storyStatus} th:text="${storyStatus.displayValue}"></option>
 
                 </select>
@@ -70,15 +61,7 @@
             </div>
             <div class="form-group mb-2">
                 <label for="estimation">Story Points</label>
-                <select class="form-control" id="estimation">
-<!--                    <option selected>...</option>-->
-<!--                    <option value="1">1</option>-->
-<!--                    <option value="2">2</option>-->
-<!--                    <option value="3">3</option>-->
-<!--                    <option value="5">5</option>-->
-<!--                    <option value="8">8</option>-->
-<!--                    <option value="13">13</option>-->
-<!--                    <option value="21">21</option>-->
+                <select class="form-control" id="estimation" field="*{estimation}" name="estimation">
                     <option th:each="storyPoint : ${storyPoints}" th:value=${storyPoint} th:text="${storyPoint.displayValue}"></option>
 
                 </select>
@@ -103,7 +86,7 @@
 
     <div class="form-group">
         <label for="description">description</label>
-        <textarea class="form-control" rows="10" id="description" name="*{description}">
+        <textarea class="form-control" rows="10" id="description" th:field="*{description}">
             my description
         </textarea>
     </div>

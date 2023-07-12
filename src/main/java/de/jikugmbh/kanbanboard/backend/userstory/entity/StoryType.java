@@ -12,4 +12,7 @@ public enum StoryType {
     private StoryType(String displayValue) {
         this.displayValue = displayValue;
     }
+    public static StoryType fromString(String enumTypeString) {
+        return StoryType.valueOf(enumTypeString);
+    }
 }

@@ -19,4 +19,8 @@ public enum StoryPoints {
         this.displayValue =value;
     }
 
+    public static StoryPoints fromString(String enumTypeString) {
+        return StoryPoints.valueOf(enumTypeString);
+    }
+
 }

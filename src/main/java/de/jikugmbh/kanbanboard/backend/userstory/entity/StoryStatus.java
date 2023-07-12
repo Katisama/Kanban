@@ -15,4 +15,8 @@ public enum StoryStatus {
     private StoryStatus(String value) {
         this.displayValue =value;
     }
+
+    public static StoryStatus fromString(String enumTypeString) {
+        return StoryStatus.valueOf(enumTypeString);
+    }
 }

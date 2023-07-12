@@ -12,4 +12,8 @@ public enum StoryPrio {
     private StoryPrio(String value) {
         this.displayValue = value;
     }
+
+    public static StoryPrio fromString(String enumTypeString) {
+        return StoryPrio.valueOf(enumTypeString);
+    }
 }
