@@ -8,8 +8,8 @@ public enum StoryPrio {
     MIDDLE("middle"),
     HIGH("high");
 
-    private String value;
+    private final String displayValue;
     private StoryPrio(String value) {
-        this.value = value;
+        this.displayValue = value;
     }
 }

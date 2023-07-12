@@ -7,9 +7,9 @@ public enum StoryType {
     STORY("Story"),
     DEFECT("Defect");
 
-    private String value;
+    private final String displayValue;
 
-    private StoryType(String value) {
-        this.value=value;
+    private StoryType(String displayValue) {
+        this.displayValue = displayValue;
     }
 }

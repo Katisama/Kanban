@@ -10,9 +10,9 @@ public enum StoryStatus {
     IN_TEST("in test"),
     DONE("done");
 
-    private String value;
+    private final String displayValue;
 
     private StoryStatus(String value) {
-        this.value=value;
+        this.displayValue =value;
     }
 }

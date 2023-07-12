@@ -16,7 +16,7 @@ public class UserStory {
     @GeneratedValue
     private Long id;
 
-    private String title;
+    private String summary;
     private StoryType type;
     private StoryPrio priority;
     private StoryStatus status;
@@ -25,7 +25,7 @@ public class UserStory {
     private Date createdAt;
     private Date updatedAt;
     private StoryPoints estimation;
-    private String text;
+    private String description;
     @ManyToOne
     private Project project;
 }

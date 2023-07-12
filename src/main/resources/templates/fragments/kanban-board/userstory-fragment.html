@@ -12,62 +12,108 @@
 
 </head>
 <body>
-<div class="container body-content">
-    <img src="pictures/Kanban-Bild.jpg" alt="Kanban-Bild">
-    <h2>User Story</h2>
-    <div>
-        <form>
-            <div class="form-group">
-                <div >
-                    <div class="form-group mt-2">
-                        <div class="col-1">
-                            <label class="control-label" for="assignee">Bearbeiter</label>
-                            <label class="control-label" id="assignee">&lt;Name&gt;</label>
-                            <input class="btn btn-primary"  name="name" type="submit"
-                                   value="Mir zuweisen" size="25" maxlength="20">
-                        </div>
-                        <div class="col-11" />
-                        <div class="mt-2">
-                            <label class="control-label col-2" for="storyTitle">Titel der User Story: </label>
 
-                            <input id="storyTitle" class="col-9" type="text" size="25" maxlength="20">
-                        </div>
-                        <div class="col-2">
-                        <select class="form-select mt-2" aria-label="Default select example">
-                            <option selected>Typ</option>
-                            <option value="1">Story</option>
-                            <option value="2">Defect</option>
-                        </select>
-                        </div>
+<form th:action="@{/save-story}" th:method="post" th:object="${userStory}">
+    <div class="form-group">
+        <h2>User Story</h2>
+    </div>
 
-                        <div class="col-2">
-                        <select class="form-select mt-2" aria-label="Default select example">
-                            <option selected>Priorität</option>
-                            <option value="1">Niedrig</option>
-                            <option value="2">Mittel</option>
-                            <option value="3">Hoch</option>
-                        </select>
-                        </div>
+    <div class="row">
+        <div class="form-group col-sm-8">
+            <label class="mb-2" for="summary">summary</label>
+            <input class="form-control mb-2" type="text" id="summary">
+        </div>
 
-                        <div class="col-2">
-                        <select class="form-select mt-2" aria-label="Default select example">
-                            <option selected>Status auswählen</option>
-                            <option value="1">Neu</option>
-                            <option value="2">in Bearbeitung</option>
-                            <option value="3">Review</option>
-                            <option value="3">Test</option>
-                            <option value="3">Done</option>
-                        </select>
-                        </div>
-
-
-                    </div>
-                </div>
+        <div class="form-group col-sm-2 mb-2">
+            <label class="mb-2" for="assignMe">Assignee</label>
+            <label class="form-control mb-2">...</label>
+            <input class="btn btn-primary form-control mb-2" id="assignMe" value="assign me">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="form-group mb-2">
+                <label for="storyType">Type</label>
+                <select class="form-control" id="storyType">
+<!--                   <option th:each="typeOpt : ${T(de.jikugmbh.kanbanboard.backend.userstory.entity.StoryType).values()}"-->
+<!--                           th:value="${typeOpt}" th:text="${typeOpt.value}"></option>-->
+                    <option th:each="typeOpt : ${typeOpts}" th:value=${typeOpt} th:text="${typeOpt.displayValue}"></option>
+                </select>
             </div>
 
-        </form>
+            <div class="form-group mb-2">
+                <label for="storyPrio">Prio</label>
+                <select class="form-control" id="storyPrio">
+<!--                    <option selected>...</option>-->
+<!--                    <option value="1">One</option>-->
+<!--                    <option value="2">Two</option>-->
+<!--                    <option value="3">Three</option>-->
+                    <option th:each="storyPrio : ${storyPrios}" th:value=${storyPrio} th:text="${storyPrio.displayValue}"></option>
+
+                </select>
+            </div>
+        </div>
+
+
+        <div class="col-sm-3">
+            <div class="form-group mb-2">
+                <label for="storyStatus">Status</label>
+                <select class="form-control" id="storyStatus">
+<!--                    <option selected>...</option>-->
+<!--                    <option value="1">One</option>-->
+<!--                    <option value="2">Two</option>-->
+<!--                    <option value="3">Three</option>-->
+                    <option th:each="storyStatus : ${storyStatus}" th:value=${storyStatus} th:text="${storyStatus.displayValue}"></option>
+
+                </select>
+
+            </div>
+            <div class="form-group mb-2">
+                <label for="estimation">Story Points</label>
+                <select class="form-control" id="estimation">
+<!--                    <option selected>...</option>-->
+<!--                    <option value="1">1</option>-->
+<!--                    <option value="2">2</option>-->
+<!--                    <option value="3">3</option>-->
+<!--                    <option value="5">5</option>-->
+<!--                    <option value="8">8</option>-->
+<!--                    <option value="13">13</option>-->
+<!--                    <option value="21">21</option>-->
+                    <option th:each="storyPoint : ${storyPoints}" th:value=${storyPoint} th:text="${storyPoint.displayValue}"></option>
+
+                </select>
+            </div>
+
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group mb-2">
+                <label for="storyUpdatedAt">updatedAt</label>
+                <label th:text="${updatedAt}" class="form-control" id="storyUpdatedAt"></label>
+            </div>
+
+            <div class="form-group mb-2">
+                <label for="storyCreatedAt">createdAt</label>
+                <label th:text="${createdAt}" class="form-control" id="storyCreatedAt"></label>
+            </div>
+
+        </div>
+        <!--        <div class="form-group col-sm-3"></div>-->
     </div>
-</div>
+
+
+    <div class="form-group">
+        <label for="description">description</label>
+        <textarea class="form-control" rows="10" id="description" field="*{description}">
+            my description
+        </textarea>
+    </div>
+    <div class="">
+            <input class="btn btn-primary" type=submit id="create" value="create">
+            <input class="btn btn-primary" type=submit id="cancel" value="cancel">
+    </div>
+
+
+</form>
 
 
 </body>
