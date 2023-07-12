@@ -25,7 +25,7 @@ public class IndexController {
         }
 
 
-        return "index";
+        return "login";
     }
 
     @RequestMapping("/product")

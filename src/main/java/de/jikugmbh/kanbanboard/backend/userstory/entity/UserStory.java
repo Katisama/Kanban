@@ -2,7 +2,7 @@ package de.jikugmbh.kanbanboard.backend.userstory.entity;
 
 import de.jikugmbh.kanbanboard.backend.project.entity.Project;
 import de.jikugmbh.kanbanboard.backend.user.entity.User;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Data;
 
 import java.util.Date;
