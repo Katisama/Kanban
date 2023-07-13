@@ -72,6 +72,15 @@ public class UserStoryController {
         return ViewFragmentConstants.KANBAN;
     }
 
+    @RequestMapping("/cancel")
+    public String cancel(Model model, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        model.addAttribute("user", session.getAttribute("user"));
+        updateView(model);
+
+        return ViewFragmentConstants.KANBAN;
+    }
+
     private void saveNew(UserStoryModel userStoryModel) {
         userStoryBoundary.save(
                 new UserStoryModelToEntityMapper().apply(userStoryModel)
