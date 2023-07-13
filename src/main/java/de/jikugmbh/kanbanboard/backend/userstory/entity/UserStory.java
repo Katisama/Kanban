@@ -3,8 +3,10 @@ package de.jikugmbh.kanbanboard.backend.userstory.entity;
 import de.jikugmbh.kanbanboard.backend.project.entity.Project;
 import de.jikugmbh.kanbanboard.backend.user.entity.User;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
@@ -12,6 +14,8 @@ import java.util.Date;
 @Builder
 @Entity
 @Table(name = "UserStories")
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserStory {
 
     @Id

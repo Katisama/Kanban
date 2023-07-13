@@ -11,7 +11,7 @@
 </head>
 <body>
 <div class="container">
-    <div class="row"><h1>Table with Bootstrap Card Elements</h1></div>
+    <div class="row"><h1>Kanban-Board</h1></div>
 
     <div class="row">
 
@@ -22,8 +22,23 @@
                 <tr>
                     <th>New</th>
                 </tr>
+
                 </thead>
                 <tbody>
+                <tr th:each="story : ${newStories}">
+                    <td>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title" th:text="${story.summary}">summary</h5>
+                                <p class="card-text" th:text="${story.description}">Some description about Card 1.</p>
+                                <p th:text="${story.estimation}"></p>
+                                <p th:text="'Prio: ' + ${story.priority.displayValue}"></p>
+                                <p th:text="'SP: ' + ${story.estimation.displayValue}"></p>
+
+                            </div>
+                        </div>
+                    </td>
+                </tr>
 
                 </tbody>
             </table>
@@ -38,7 +53,20 @@
                 </tr>
                 </thead>
                 <tbody>
+                <tr th:each="story : ${blocked}">
+                    <td>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title" th:text="${story.summary}">summary</h5>
+                                <p class="card-text" th:text="${story.description}">Some description about Card 1.</p>
+                                <p th:text="'Prio: ' + ${story.priority.displayValue}"></p>
+                                <p th:text="'SP: ' + ${story.estimation.displayValue}"></p>
 
+
+                            </div>
+                        </div>
+                    </td>
+                </tr>
                 </tbody>
             </table>
         </div>
@@ -52,7 +80,20 @@
                 </tr>
                 </thead>
                 <tbody>
+                <tr th:each="story : ${inProgress}">
+                    <td>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title" th:text="${story.summary}">summary</h5>
+                                <p class="card-text" th:text="${story.description}">Some description about Card 1.</p>
+                                <p th:text="'Prio: ' + ${story.priority.displayValue}"></p>
+                                <p th:text="'SP: ' + ${story.estimation.displayValue}"></p>
 
+
+                            </div>
+                        </div>
+                    </td>
+                </tr>
                 </tbody>
             </table>
         </div>
@@ -66,7 +107,20 @@
                 </tr>
                 </thead>
                 <tbody>
+                <tr th:each="story : ${inReview}">
+                    <td>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title" th:text="${story.summary}">summary</h5>
+                                <p class="card-text" th:text="${story.description}">Some description about Card 1.</p>
+                                <p th:text="'Prio: ' + ${story.priority.displayValue}"></p>
+                                <p th:text="'SP: ' + ${story.estimation.displayValue}"></p>
 
+
+                            </div>
+                        </div>
+                    </td>
+                </tr>
                 </tbody>
             </table>
         </div>
@@ -80,7 +134,20 @@
                 </tr>
                 </thead>
                 <tbody>
+                <tr th:each="story : ${inTest}">
+                    <td>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title" th:text="${story.summary}">summary</h5>
+                                <p class="card-text" th:text="${story.description}">Some description about Card 1.</p>
+                                <p th:text="'Prio: ' + ${story.priority.displayValue}"></p>
+                                <p th:text="'SP: ' + ${story.estimation.displayValue}"></p>
 
+
+                            </div>
+                        </div>
+                    </td>
+                </tr>
                 </tbody>
             </table>
         </div>
@@ -94,13 +161,25 @@
                 </tr>
                 </thead>
                 <tbody>
+                <tr th:each="story : ${done}">
+                    <td>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title" th:text="${story.summary}">summary</h5>
+                                <p class="card-text" th:text="${story.description}">Some description about Card 1.</p>
+                                <p th:text="'Prio: ' + ${story.priority.displayValue}"></p>
+                                <p th:text="'SP: ' + ${story.estimation.displayValue}"></p>
 
+                            </div>
+                        </div>
+                    </td>
+                </tr>
                 </tbody>
             </table>
         </div>
-
-
     </div>
+
+</div>
 </body>
 </html>
 

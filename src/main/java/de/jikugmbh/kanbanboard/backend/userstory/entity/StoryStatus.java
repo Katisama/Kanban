@@ -4,11 +4,12 @@ import lombok.Getter;
 
 @Getter
 public enum StoryStatus {
-    NEW("new"),
-    IN_PROGRESS("in progress"),
-    IN_REVIEW("in review"),
-    IN_TEST("in test"),
-    DONE("done");
+    NEW("New"),
+    BLOCKED("Blocked"),
+    IN_PROGRESS("In Progress"),
+    IN_REVIEW("In Review"),
+    IN_TEST("In Test"),
+    DONE("Done");
 
     private final String displayValue;
 
