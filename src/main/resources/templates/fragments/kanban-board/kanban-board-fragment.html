@@ -29,11 +29,15 @@
                     <td>
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title" th:text="${story.summary}">summary</h5>
-                                <p class="card-text" th:text="${story.description}">Some description about Card 1.</p>
-                                <p th:text="${story.estimation}"></p>
-                                <p th:text="'Prio: ' + ${story.priority.displayValue}"></p>
-                                <p th:text="'SP: ' + ${story.estimation.displayValue}"></p>
+                                <form action="/edit-user-story" method="post">
+                                    <h5 class="card-title" th:text="${story.summary}">summary</h5>
+                                    <p class="card-text" th:text="${story.description}">description</p>
+                                    <p th:text="'Prio: ' + ${story.priority.displayValue}"></p>
+                                    <p th:text="'SP: ' + ${story.estimation.displayValue}"></p>
+                                    <!-- Hidden input field for the entity ID -->
+                                    <input type="hidden" name="storyId" th:value="${story.id}">
+                                    <button type="submit" class="btn btn-primary">Edit</button>
+                                </form>
 
                             </div>
                         </div>
@@ -57,11 +61,15 @@
                     <td>
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title" th:text="${story.summary}">summary</h5>
-                                <p class="card-text" th:text="${story.description}">Some description about Card 1.</p>
-                                <p th:text="'Prio: ' + ${story.priority.displayValue}"></p>
-                                <p th:text="'SP: ' + ${story.estimation.displayValue}"></p>
-
+                                <form action="/edit-user-story" method="post">
+                                    <h5 class="card-title" th:text="${story.summary}">summary</h5>
+                                    <p class="card-text" th:text="${story.description}">description</p>
+                                    <p th:text="'Prio: ' + ${story.priority.displayValue}"></p>
+                                    <p th:text="'SP: ' + ${story.estimation.displayValue}"></p>
+                                    <!-- Hidden input field for the entity ID -->
+                                    <input type="hidden" name="storyId" th:value="${story.id}">
+                                    <button type="submit" class="btn btn-primary">Edit</button>
+                                </form>
 
                             </div>
                         </div>
@@ -84,11 +92,15 @@
                     <td>
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title" th:text="${story.summary}">summary</h5>
-                                <p class="card-text" th:text="${story.description}">Some description about Card 1.</p>
-                                <p th:text="'Prio: ' + ${story.priority.displayValue}"></p>
-                                <p th:text="'SP: ' + ${story.estimation.displayValue}"></p>
-
+                                <form action="/edit-user-story" method="post">
+                                    <h5 class="card-title" th:text="${story.summary}">summary</h5>
+                                    <p class="card-text" th:text="${story.description}">description</p>
+                                    <p th:text="'Prio: ' + ${story.priority.displayValue}"></p>
+                                    <p th:text="'SP: ' + ${story.estimation.displayValue}"></p>
+                                    <!-- Hidden input field for the entity ID -->
+                                    <input type="hidden" name="storyId" th:value="${story.id}">
+                                    <button type="submit" class="btn btn-primary">Edit</button>
+                                </form>
 
                             </div>
                         </div>
@@ -111,11 +123,15 @@
                     <td>
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title" th:text="${story.summary}">summary</h5>
-                                <p class="card-text" th:text="${story.description}">Some description about Card 1.</p>
-                                <p th:text="'Prio: ' + ${story.priority.displayValue}"></p>
-                                <p th:text="'SP: ' + ${story.estimation.displayValue}"></p>
-
+                                <form action="/edit-user-story" method="post">
+                                    <h5 class="card-title" th:text="${story.summary}">summary</h5>
+                                    <p class="card-text" th:text="${story.description}">description</p>
+                                    <p th:text="'Prio: ' + ${story.priority.displayValue}"></p>
+                                    <p th:text="'SP: ' + ${story.estimation.displayValue}"></p>
+                                    <!-- Hidden input field for the entity ID -->
+                                    <input type="hidden" name="storyId" th:value="${story.id}">
+                                    <button type="submit" class="btn btn-primary">Edit</button>
+                                </form>
 
                             </div>
                         </div>
@@ -138,11 +154,15 @@
                     <td>
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title" th:text="${story.summary}">summary</h5>
-                                <p class="card-text" th:text="${story.description}">Some description about Card 1.</p>
-                                <p th:text="'Prio: ' + ${story.priority.displayValue}"></p>
-                                <p th:text="'SP: ' + ${story.estimation.displayValue}"></p>
-
+                                <form action="/edit-user-story" method="post">
+                                    <h5 class="card-title" th:text="${story.summary}">summary</h5>
+                                    <p class="card-text" th:text="${story.description}">description</p>
+                                    <p th:text="'Prio: ' + ${story.priority.displayValue}"></p>
+                                    <p th:text="'SP: ' + ${story.estimation.displayValue}"></p>
+                                    <!-- Hidden input field for the entity ID -->
+                                    <input type="hidden" name="storyId" th:value="${story.id}">
+                                    <button type="submit" class="btn btn-primary">Edit</button>
+                                </form>
 
                             </div>
                         </div>
@@ -165,10 +185,15 @@
                     <td>
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title" th:text="${story.summary}">summary</h5>
-                                <p class="card-text" th:text="${story.description}">Some description about Card 1.</p>
-                                <p th:text="'Prio: ' + ${story.priority.displayValue}"></p>
-                                <p th:text="'SP: ' + ${story.estimation.displayValue}"></p>
+                                <form action="/edit-user-story" method="post">
+                                    <h5 class="card-title" th:text="${story.summary}">summary</h5>
+                                    <p class="card-text" th:text="${story.description}">description</p>
+                                    <p th:text="'Prio: ' + ${story.priority.displayValue}"></p>
+                                    <p th:text="'SP: ' + ${story.estimation.displayValue}"></p>
+                                    <!-- Hidden input field for the entity ID -->
+                                    <input type="hidden" name="storyId" th:value="${story.id}">
+                                    <button type="submit" class="btn btn-primary">Edit</button>
+                                </form>
 
                             </div>
                         </div>

@@ -1,5 +1,10 @@
 package de.jikugmbh.kanbanboard.web.userstory.model;
 
+import de.jikugmbh.kanbanboard.backend.user.entity.User;
+import de.jikugmbh.kanbanboard.backend.userstory.entity.StoryPoints;
+import de.jikugmbh.kanbanboard.backend.userstory.entity.StoryPrio;
+import de.jikugmbh.kanbanboard.backend.userstory.entity.StoryStatus;
+import de.jikugmbh.kanbanboard.backend.userstory.entity.StoryType;
 import lombok.Builder;
 import lombok.Data;
 
@@ -10,11 +15,11 @@ public class UserStoryModel {
     private Long storyId;
     private String description;
     private String summary;
-    private String type;
-    private String status;
-    private Long assigneeId;
-    private String estimation;
+    private StoryType type;
+    private StoryStatus status;
+    private User assignee;
+    private StoryPoints estimation;
     private Long projectId;
-    private String priority;
+    private StoryPrio priority;
 
 }

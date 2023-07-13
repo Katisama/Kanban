@@ -2,8 +2,7 @@ package de.jikugmbh.kanbanboard.web.userstory;
 
 import de.jikugmbh.kanbanboard.backend.userstory.boundary.UserStoryBoundary;
 import de.jikugmbh.kanbanboard.backend.userstory.control.UserStoryModelToEntityMapper;
-import de.jikugmbh.kanbanboard.backend.userstory.entity.StoryStatus;
-import de.jikugmbh.kanbanboard.backend.userstory.entity.UserStory;
+import de.jikugmbh.kanbanboard.backend.userstory.entity.*;
 import de.jikugmbh.kanbanboard.web.userstory.model.UserStoryModel;
 import de.jikugmbh.kanbanboard.web.view.ViewFragmentConstants;
 import jakarta.servlet.http.HttpServletRequest;
@@ -15,8 +14,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Optional;
 
 
 @Controller
@@ -34,6 +38,35 @@ public class UserStoryController {
         model.addAttribute("user", session.getAttribute("user") );
 
         saveNew(userStoryModel);
+        updateView(model);
+
+        return ViewFragmentConstants.KANBAN;
+    }
+
+    @RequestMapping("/edit-user-story")
+    public String editStory(@ModelAttribute UserStoryModel userStoryModel, Model model, HttpServletRequest request) {
+
+        Long storyId = userStoryModel.getStoryId();
+        Optional<UserStory> userStoryById = userStoryBoundary.getUserStoryById(storyId);
+        if (userStoryById.isPresent()) {
+            log.info("edit story: " + userStoryById.get());
+            model.addAttribute("userStory", userStoryById.get());
+        }
+        HttpSession session = request.getSession();
+        model.addAttribute("user", session.getAttribute("user"));
+
+        prepareGuiModel(model);
+
+        return ViewFragmentConstants.EDIT_USER_STORY;
+    }
+
+    @PostMapping("/update-story")
+    public String updateStory(@ModelAttribute UserStory userStory, HttpServletRequest request, Model model) {
+        HttpSession session = request.getSession();
+        log.info("to update: " + userStory);
+        UserStory saved = userStoryBoundary.save(userStory);
+        log.info("updated: " + saved);
+        model.addAttribute("user", session.getAttribute("user"));
         updateView(model);
 
         return ViewFragmentConstants.KANBAN;
@@ -62,6 +95,19 @@ public class UserStoryController {
         model.addAttribute("inReview", inReviewStories);
         model.addAttribute("inTest", inTestStories);
         model.addAttribute("done", doneStories);
+    }
+
+    private void prepareGuiModel(Model model) {
+        model.addAttribute("typeOpts", StoryType.values());
+        model.addAttribute("storyPoints", StoryPoints.values());
+        model.addAttribute("storyPrios", StoryPrio.values());
+        model.addAttribute("storyStatus", StoryStatus.values());
+
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        String createdAt = dateTimeFormatter.format(LocalDate.now(ZoneId.systemDefault()));
+
+        model.addAttribute("createdAt", createdAt);
+        model.addAttribute("updatedAt", createdAt);
     }
 
 }

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport"/>
+    <!--    <title>User Story</title>-->
+    <!--    <title th:text="#{login.form.title}">Page Title</title>-->
+
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+</head>
+<body>
+
+<form th:action="@{/update-story}" th:method="post" th:object="${userStory}">
+    <input type="hidden" th:field="*{id}">
+    <div class="form-group">
+        <h2>User Story</h2>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-sm-8">
+            <label class="mb-2" for="summary">summary</label>
+            <input class="form-control mb-2" type="text" id="summary" th:field="*{summary}">
+        </div>
+
+        <div class="form-group col-sm-2 mb-2">
+            <label class="mb-2" for="assignMe">Assignee</label>
+            <label class="form-control mb-2">...</label>
+            <input class="btn btn-primary form-control mb-2" id="assignMe" value="assign me">
+            <input type="hidden" field="*{assigneeId}" name="assigneeId">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="form-group mb-2">
+                <label for="storyType">Type</label>
+                <select class="form-control" id="storyType" th:field="*{type}" name="type">
+                    <option th:each="typeOpt : ${typeOpts}" th:value=${typeOpt} th:text="${typeOpt.displayValue}" th:selected="${typeOpt == userStory.type}"></option>
+                </select>
+            </div>
+
+            <div class="form-group mb-2">
+                <label for="storyPrio">Prio</label>
+                <select class="form-control" id="storyPrio" field="*{priority}" name="priority">
+                    <option th:each="storyPrio : ${storyPrios}" th:value=${storyPrio} th:text="${storyPrio.displayValue}" th:selected="${storyPrio == userStory.priority}"></option>
+
+                </select>
+            </div>
+        </div>
+
+
+        <div class="col-sm-3">
+            <div class="form-group mb-2">
+                <label for="storyStatus">Status</label>
+                <select class="form-control" id="storyStatus" field="*{status}" name="status">
+                    <option th:each="storyStatus : ${storyStatus}" th:value=${storyStatus} th:text="${storyStatus.displayValue}" th:selected="${storyStatus == userStory.status}"></option>
+
+                </select>
+
+            </div>
+            <div class="form-group mb-2">
+                <label for="estimation">Story Points</label>
+                <select class="form-control" id="estimation" field="*{estimation}" name="estimation">
+                    <option th:each="storyPoint : ${storyPoints}" th:value=${storyPoint} th:text="${storyPoint.displayValue}" th:selected="${storyPoint == userStory.estimation}"></option>
+
+                </select>
+            </div>
+
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group mb-2">
+                <label for="storyUpdatedAt">updatedAt</label>
+                <label th:text="${updatedAt}" class="form-control" id="storyUpdatedAt"></label>
+            </div>
+
+            <div class="form-group mb-2">
+                <label for="storyCreatedAt">createdAt</label>
+                <label th:text="${createdAt}" class="form-control" id="storyCreatedAt"></label>
+            </div>
+
+        </div>
+        <!--        <div class="form-group col-sm-3"></div>-->
+    </div>
+
+
+    <div class="form-group">
+        <label for="description">description</label>
+        <textarea class="form-control" rows="10" id="description" th:field="*{description}" th:text="${userStory.description}">
+            my description
+        </textarea>
+    </div>
+    <div class="">
+            <input class="btn btn-primary" type=submit id="create" value="Save">
+            <input class="btn btn-primary" type=submit id="cancel" value="Cancel">
+    </div>
+
+
+</form>
+
+
+</body>
+</html>

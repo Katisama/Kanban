@@ -13,25 +13,25 @@ public class UserStoryModelToEntityMapper implements Function<UserStoryModel, Us
         return UserStory.builder()
                 .description(userStoryModel.getDescription())
                 .summary(userStoryModel.getSummary())
-                .type(
-                        StoryType.fromString(
-                                userStoryModel.getType()
-                        )
+                .type(userStoryModel.getType()
+//                        StoryType.fromString(
+//                                userStoryModel.getType()
+//                        )
                 )
-                .status(
-                        StoryStatus.valueOf(
-                                userStoryModel.getStatus()
-                        )
+                .status(userStoryModel.getStatus()
+//                        StoryStatus.valueOf(
+//                                userStoryModel.getStatus()
+//                        )
                 )
-                .estimation(
-                        StoryPoints.fromString(
-                                userStoryModel.getEstimation()
-                        )
+                .estimation(userStoryModel.getEstimation()
+//                        StoryPoints.fromString(
+//                                userStoryModel.getEstimation()
+//                        )
                 )
-                .priority(
-                        StoryPrio.fromString(
-                                userStoryModel.getPriority()
-                        )
+                .priority(userStoryModel.getPriority()
+//                        StoryPrio.fromString(
+//                                userStoryModel.getPriority()
+//                        )
                 )
                 .build();
 
