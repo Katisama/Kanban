@@ -7,3 +7,9 @@ spring:
     hibernate.ddl-auto: update
     show-sql: true
     generate-ddl: true
+  thymeleaf:
+    cache: false
+  session:
+    store-type: jdbc
+    jdbc:
+      initialize-schema: always

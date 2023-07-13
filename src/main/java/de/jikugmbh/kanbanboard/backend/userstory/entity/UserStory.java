@@ -3,11 +3,13 @@ package de.jikugmbh.kanbanboard.backend.userstory.entity;
 import de.jikugmbh.kanbanboard.backend.project.entity.Project;
 import de.jikugmbh.kanbanboard.backend.user.entity.User;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 
 import java.util.Date;
 
 @Data
+@Builder
 @Entity
 @Table(name = "UserStories")
 public class UserStory {
@@ -16,7 +18,7 @@ public class UserStory {
     @GeneratedValue
     private Long id;
 
-    private String title;
+    private String summary;
     private StoryType type;
     private StoryPrio priority;
     private StoryStatus status;
@@ -25,7 +27,7 @@ public class UserStory {
     private Date createdAt;
     private Date updatedAt;
     private StoryPoints estimation;
-    private String text;
+    private String description;
     @ManyToOne
     private Project project;
 }

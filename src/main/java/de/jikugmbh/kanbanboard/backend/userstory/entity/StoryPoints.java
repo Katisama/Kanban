@@ -5,6 +5,7 @@ import lombok.Getter;
 
 @Getter
 public enum StoryPoints {
+    NO_POINTS(0),
     ONE(1),
     TWO(2),
     THREE(3),
@@ -13,12 +14,13 @@ public enum StoryPoints {
     THIRTEEN(13),
     TWENTY_ONE(21);
 
-    private int value;
+    private final int displayValue;
     private StoryPoints(int value) {
-        this.value=value;
+        this.displayValue =value;
     }
 
-    public static int getValueByEnum(StoryPoints storyPoints) {
-        return storyPoints.getValue();
+    public static StoryPoints fromString(String enumTypeString) {
+        return StoryPoints.valueOf(enumTypeString);
     }
+
 }
