@@ -7,6 +7,7 @@ import lombok.Data;
 @Builder
 public class UserStoryModel {
 
+    private Long storyId;
     private String description;
     private String summary;
     private String type;

@@ -45,7 +45,7 @@ public class NavBarController {
 
         updateView(model);
 
-        return ViewFragmentConstants.CREATE_NEW_USER_STORY;
+        return ViewFragmentConstants.SAVE_USER_STORY;
     }
 
     private void updateView(Model model) {
