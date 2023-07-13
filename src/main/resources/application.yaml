@@ -9,3 +9,7 @@ spring:
     generate-ddl: true
   thymeleaf:
     cache: false
+  session:
+    store-type: jdbc
+    jdbc:
+      initialize-schema: always

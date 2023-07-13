@@ -5,16 +5,16 @@ import de.jikugmbh.kanbanboard.backend.userstory.entity.StoryPrio;
 import de.jikugmbh.kanbanboard.backend.userstory.entity.StoryStatus;
 import de.jikugmbh.kanbanboard.backend.userstory.entity.StoryType;
 import de.jikugmbh.kanbanboard.web.userstory.model.UserStoryModel;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
+import java.util.Objects;
 
 @Controller
 public class NavBarController {
@@ -37,9 +37,13 @@ public class NavBarController {
 
 
     @RequestMapping("/logout")
-    public String logout() {
+    public String doLogout(HttpServletRequest request) {
 
-        return "sayonara";
+        HttpSession session = request.getSession(false);
+        if (Objects.nonNull(session)) {
+            session.invalidate();
+        }
+        return "/login";
     }
 
 

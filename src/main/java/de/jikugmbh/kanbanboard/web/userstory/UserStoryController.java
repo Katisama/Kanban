@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -20,11 +21,11 @@ public class UserStoryController {
     private final UserStoryBoundary userStoryBoundary;
 
     @PostMapping("/save-story")
-    public String createNew(@ModelAttribute("userStoryModel") UserStoryModel userStory) {
+    public String createNew(@ModelAttribute("userStoryModel") UserStoryModel userStoryModel, Model model) {
 
 
             userStoryBoundary.save(
-                    new UserStoryModelToEntityMapper().apply(userStory)
+                    new UserStoryModelToEntityMapper().apply(userStoryModel)
             );
 
 

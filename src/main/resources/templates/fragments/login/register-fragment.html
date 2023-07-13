@@ -11,36 +11,36 @@
 </head>
 <body>
 <div class="container body-content">
-    <form action="/register" method=post
-                  oninput='repeatPasswort.setCustomValidity(repeatPasswort.value != passwort.value ? "Passwort nicht identisch." : "")'>
+    <form action="/register" method=post th:object="${userRegisterModel}"
+                  oninput='repeatPassword.setCustomValidity(repeatPassword.value != password.value ? "Passwort nicht identisch." : "")'>
         <div class="form-group">
             <div class="col-2">
                 <div class="form-group mt-2">
                     <label class="control-label" for="vornameInput">Vorname</label>
-                    <input type="vorname" class="form-control" id="vornameInput" placeholder="Vorname"/>
+                    <input type="vorname" class="form-control" id="vornameInput" placeholder="Vorname" field="*{firstName}" name="firstName"/>
                 </div>
 
                 <div class="form-group mt-2">
                     <label class="control-label" for="nachnameInput">Nachname</label>
-                    <input type="nachname" class="form-control" id="nachnameInput" placeholder="Nachname"/>
+                    <input type="nachname" class="form-control" id="nachnameInput" placeholder="Nachname" field="*{lastName}" name="lastName"/>
                 </div>
 
                 <div class="form-group mt-2">
                     <label class="control-label" for="emailInput">E-Mail-Adresse</label>
-                    <input type="email" required name="email" class="form-control" id="emailInput" placeholder="E-Mail"/>
+                    <input type="email" required class="form-control" id="emailInput" placeholder="E-Mail" name="email"/>
                 </div>
 
                 <div class="form-group mt-2">
                     <label for="passwordInput">Passwort</label>
-                    <input type="password" class="form-control" id="passwordInput" placeholder="Passwort" name="passwort"/>
+                    <input type="password" class="form-control" id="passwordInput" placeholder="Passwort" field="*{password}" name="password"/>
                 </div>
 
                 <div class="form-group mt-2">
                     <label class="control-label" for="repeatPasswordInput">Passwort</label>
-                    <input type="password" class="form-control" id="repeatPasswordInput" placeholder="Passwort wiederholen" name="repeatPasswort"/>
+                    <input type="password" class="form-control" id="repeatPasswordInput" placeholder="Repeat password" name="repeatPassword"/>
                 </div>
                 <input class="btn btn-primary mt-2" type="submit" value="Registrieren"/>
-<!--                <a href="#" class="btn btn-primary form-group mt-2">Registrieren</a>-->
+
             </div>
 
             <div>

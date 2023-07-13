@@ -4,18 +4,18 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
-@Getter
-@Setter
-@RequiredArgsConstructor
-@ToString
+import java.io.Serializable;
+
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "Users")
-public class User {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue
@@ -23,7 +23,7 @@ public class User {
 
     private String firstName;
     private String lastName;
-    private String eMail;
+    private String email;
     private String password;
 
 }

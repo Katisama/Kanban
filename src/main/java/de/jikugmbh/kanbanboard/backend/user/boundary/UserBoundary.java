@@ -17,4 +17,11 @@ public class UserBoundary {
         return userRepository.findById(id);
     }
 
+    public Optional<User> getUserByEmail(String email) {
+        return userRepository.findUserByEmail(email);
+    }
+
+    public User saveUser(User user) {
+        return userRepository.save(user);
+    }
 }
