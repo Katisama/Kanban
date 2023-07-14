@@ -1,6 +1,10 @@
 package de.jikugmbh.kanbanboard.web.view;
 
-public interface ViewFragmentConstants {
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public abstract class ViewFragmentConstants {
         public static final String KANBAN = "kanban";
         public static final String LOGIN = "login";
         public static final String NEW_PROJECT = "new-project";

@@ -45,7 +45,7 @@ public class LoginController {
         HttpSession session = request.getSession();
 
         if(userByEmail.isPresent()) {
-            addSessionAttributes(model, session, userByEmail);
+            addSessionAttributes(session, userByEmail);
             addSessionToModel(model, session);
             updateView(model);
         } else {
@@ -56,7 +56,7 @@ public class LoginController {
         return ViewFragmentConstants.KANBAN;
     }
 
-    private void addSessionAttributes(Model model, HttpSession session, Optional<User> userByEmail) {
+    private void addSessionAttributes(HttpSession session, Optional<User> userByEmail) {
         session.setAttribute("user", userByEmail.get());
         logger.info("session: " + session.getAttribute("user"));
     }
