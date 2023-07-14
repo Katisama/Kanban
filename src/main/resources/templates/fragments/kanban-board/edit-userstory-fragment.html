@@ -37,14 +37,17 @@
             <div class="form-group mb-2">
                 <label for="storyType">Type</label>
                 <select class="form-control" id="storyType" th:field="*{type}" name="type">
-                    <option th:each="typeOpt : ${typeOpts}" th:value=${typeOpt} th:text="${typeOpt.displayValue}" th:selected="${typeOpt == userStory.type}"></option>
+                    <option th:each="typeOpt : ${typeOpts}" th:value=${typeOpt} th:text="${typeOpt.displayValue}"
+                            th:selected="${typeOpt == userStory.type}"></option>
                 </select>
             </div>
 
             <div class="form-group mb-2">
                 <label for="storyPrio">Prio</label>
                 <select class="form-control" id="storyPrio" field="*{priority}" name="priority">
-                    <option th:each="storyPrio : ${storyPrios}" th:value=${storyPrio} th:text="${storyPrio.displayValue}" th:selected="${storyPrio == userStory.priority}"></option>
+                    <option th:each="storyPrio : ${storyPrios}" th:value=${storyPrio}
+                            th:text="${storyPrio.displayValue}"
+                            th:selected="${storyPrio == userStory.priority}"></option>
 
                 </select>
             </div>
@@ -55,7 +58,9 @@
             <div class="form-group mb-2">
                 <label for="storyStatus">Status</label>
                 <select class="form-control" id="storyStatus" field="*{status}" name="status">
-                    <option th:each="storyStatus : ${storyStatus}" th:value=${storyStatus} th:text="${storyStatus.displayValue}" th:selected="${storyStatus == userStory.status}"></option>
+                    <option th:each="storyStatus : ${storyStatus}" th:value=${storyStatus}
+                            th:text="${storyStatus.displayValue}"
+                            th:selected="${storyStatus == userStory.status}"></option>
 
                 </select>
 
@@ -63,7 +68,9 @@
             <div class="form-group mb-2">
                 <label for="estimation">Story Points</label>
                 <select class="form-control" id="estimation" field="*{estimation}" name="estimation">
-                    <option th:each="storyPoint : ${storyPoints}" th:value=${storyPoint} th:text="${storyPoint.displayValue}" th:selected="${storyPoint == userStory.estimation}"></option>
+                    <option th:each="storyPoint : ${storyPoints}" th:value=${storyPoint}
+                            th:text="${storyPoint.displayValue}"
+                            th:selected="${storyPoint == userStory.estimation}"></option>
 
                 </select>
             </div>
@@ -87,14 +94,15 @@
 
     <div class="form-group">
         <label for="description">description</label>
-        <textarea class="form-control" rows="10" id="description" th:field="*{description}" th:text="${userStory.description}">
+        <textarea class="form-control" rows="10" id="description" th:field="*{description}"
+                  th:text="${userStory.description}">
             my description
         </textarea>
     </div>
     <div class="">
-            <input class="btn btn-primary" type=submit id="create" value="Save">
-            <input class="btn btn-primary" type=button onclick="location.href='/cancel'" id="cancel" value="Cancel">
-<!--            <input class="btn btn-primary" type=button onclick="location.href='/delete'" id="d"-->
+        <input class="btn btn-primary" name="action" type=submit id="create" value="Save">
+        <input class="btn btn-primary" type=button onclick="location.href='/cancel'" id="cancel" value="Cancel">
+        <input class="btn btn-danger" name="action" type=submit id="delete" value="Delete">
     </div>
 
 

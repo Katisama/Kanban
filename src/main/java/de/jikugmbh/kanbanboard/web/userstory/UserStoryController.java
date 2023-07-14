@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -35,7 +36,7 @@ public class UserStoryController {
     public String createNew(@ModelAttribute("userStoryModel") UserStoryModel userStoryModel, Model model, HttpServletRequest request) {
 
         HttpSession session = request.getSession();
-        model.addAttribute("user", session.getAttribute("user") );
+        model.addAttribute("user", session.getAttribute("user"));
 
         saveNew(userStoryModel);
         updateView(model);
@@ -61,16 +62,24 @@ public class UserStoryController {
     }
 
     @PostMapping("/update-story")
-    public String updateStory(@ModelAttribute UserStory userStory, HttpServletRequest request, Model model) {
+    public String updateStory(@ModelAttribute UserStory userStory, @RequestParam("action") String action, HttpServletRequest request, Model model) {
+
+        if (action.equals("Save")) {
+        log.info("saving story");
+            userStoryBoundary.save(userStory);
+        } else if (action.equals("Delete")) {
+        log.info("deleting story");
+            userStoryBoundary.delete(userStory.getId());
+        }
+
         HttpSession session = request.getSession();
-        log.info("to update: " + userStory);
-        UserStory saved = userStoryBoundary.save(userStory);
-        log.info("updated: " + saved);
         model.addAttribute("user", session.getAttribute("user"));
         updateView(model);
+        log.info("updating Kanban after deleting");
 
         return ViewFragmentConstants.KANBAN;
     }
+
 
     @RequestMapping("/cancel")
     public String cancel(Model model, HttpServletRequest request) {
@@ -118,5 +127,6 @@ public class UserStoryController {
         model.addAttribute("createdAt", createdAt);
         model.addAttribute("updatedAt", createdAt);
     }
+
 
 }
